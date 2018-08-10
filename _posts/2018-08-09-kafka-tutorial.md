@@ -3,14 +3,16 @@ title: A Kafka tutorial
 tags: tutorial, kafka
 ---
 
-# This is Kafka
-
 Kafka is a system for message exchanging based on publisher/subscriber paradigm.
 As such, an emitter publishes a information within a context without indicating
 directly which will be its receivers. These receivers subscribe themselves to
 these contexts to receive messages published through them. It is very common to
 use a centralized element that deals with context management, published messages
-and receiver subscriptions.
+and receiver subscriptions. In this tutorial, we'll review what are the important
+elements in a Kafka cluster, how to use them, what are the messages exchanged
+between each entity and so on.
+
+# This is Kafka
 
 In Kafka, the emitters are called "producers", receivers are called "consumers"
 and context are called "topics" which can be subdivided into one or more

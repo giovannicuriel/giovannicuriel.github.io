@@ -1,3 +1,7 @@
+---
+title: "This is a sample page"
+---
+
 <ul>
   {% for post in site.posts %}
     <li>

@@ -3,51 +3,66 @@ title: A Kafka tutorial
 tags: tutorial, kafka
 ---
 
-Kafka is a system for message exchanging based on publisher/subscriber paradigm.
-As such, an emitter publishes a information within a context without indicating
-directly which will be its receivers. These receivers subscribe themselves to
-these contexts to receive messages published through them. It is very common to
-use a centralized element that deals with context management, published messages
-and receiver subscriptions. In this tutorial, we'll review what are the important
-elements in a Kafka cluster, how to use them, what are the messages exchanged
-between each entity and so on.
+Kafka is a system for message exchanging based on publisher/subscriber
+paradigm. As such, an emitter publishes a information within a context without
+indicating directly which will be its receivers. These receivers subscribe
+themselves to these contexts to receive messages published through them. It is
+very common to use a centralized element that deals with context management,
+published messages and receiver subscriptions. In this tutorial, we'll review
+what are the important elements in a Kafka cluster, how to use them, what are
+the messages exchanged between each entity and so on.
 
 # This is Kafka
 
 In Kafka, the emitters are called "producers", receivers are called "consumers"
 and context are called "topics" which can be subdivided into one or more
-"partitions". To wrap things up: producers publish messages through a particular
-topic. This message will be added to a partition associated to this topic. Consumers
-that are subscribed to this topic that are listening to this partition will get the message.
-This description is very shallow and omits a lot of important details, which will be explained
-in the following details.
+"partitions". To wrap things up: producers publish messages through a
+particular topic. This message will be added to a partition associated to this
+topic. Consumers that are subscribed to this topic that are listening to this
+partition will get the message. This description is very shallow and omits a
+lot of important details, which will be explained in the following details.
 
 # Entities
 
-All configuration and operation of a Kafka cluster use the following entities. Each
-one of them will be detailed in a proper moment in this tutorial - this list is
-more useful if considered as a summary of everything that occurs while using Kafka.
+All configuration and operation of a Kafka cluster use the following entities.
+Each one of them will be detailed in a proper moment in this tutorial - this
+list is more useful if considered as a summary of everything that occurs while
+using Kafka.
 
-- Kafka instance: a software instance that will play the role of a message broker;
+- Kafka instance: a software instance that will play the role of a message
+  broker;
 - Leader: Kafka instance responsible for electing partition leaders;
-- Bootstrap broker list: Kafka instance list that will be used when first connecting to the Kafka cluster.
-  These addresses will be used by clients when trying to check current cluster status and before connecting
-  to the cluster leader.
-- Cluster: coordinated group of Kafka instances that servers a group of clients;
-- Client a software instance that sends requests to a Kafka instance to get or transmit
-  information;
+- Bootstrap broker list: Kafka instance list that will be used when first
+  connecting to the Kafka cluster. These addresses will be used by clients when
+  trying to check current cluster status and before connecting to the cluster
+  leader.
+- Cluster: coordinated group of Kafka instances that servers a group of
+  clients;
+- Client a software instance that sends requests to a Kafka instance to get or
+  transmit information;
 - Producer: a client that plays the role of a message emitter;
 - Consumer: a client that plays the role of a message receiver;
 
+  Partition: a message log associated with a topic and managed by a Kafka
+  instance that keeps a subset of all messages published to that topic.
 
-Produtor: um cliente que desempenha o papel de emissor de mensagens;
-Consumidor: um cliente que desempenha o papel de receptor de mensagens;
-Partição: um registro de mensagens associado a um tópico e gerenciado por uma instância do Kafka que mantém um subconjunto de todas as mensagens publicadas neste tópico;
-Líder da partição: instância do Kafka responsável pelo gerenciamento de uma partição;
-Partição original: uma partição que serve de fonte de informações para a geração de registros em partições de réplica;
-Réplica: partições que são cópias idênticas de uma partição original. A instância do Kafka que gerencia as réplicas são diferentes do líder da partição de origem;
-ISR (In-sync replica): Partições que estão em sincronia com a partição original;
-Grupo de consumidores: conjunto de consumidores que atuam de forma coordenada na recepção de mensagens provenientes de diferentes partições de um tópico;
+  Partition leader: Kafka instance responsible for managing a particular
+  partition;
+
+  Original partition: a partition that serves as a data source for replica
+  partitions;
+
+  Replica: partitions that are identical copies of an original partition. The
+  Kafka instances that manage replica partitions are different from leader
+  partition Kafka instance;
+
+  ISR (In-sync replica): partitions that are fully synchronized to a original
+  partition;
+
+  Consumer group: set of consumers that work in a coordinated way while
+  receiving messages from partitions of a topic;
+
+
 Líder do grupo de consumidores: instância de um consumidor que atua como gerenciador durante a associação entre consumidores e partições de um tópico;
 Controlador: instância do Kafka que atua como seletor de qual consumidor é o líder do grupo de consumidores.
 Este tutorial seguirá o fluxo normal de uso do Kafka, detalhando cada fase conforme necessário. A primeira fase é a de inicialização de uma instância do Kafka, passando para conexões de clientes e criação de tópicos. Em seguida, a publicação de mensagens será explicada, assim como seu consumo (incluindo detalhes de como consumidores se organizam para receber mensagens).

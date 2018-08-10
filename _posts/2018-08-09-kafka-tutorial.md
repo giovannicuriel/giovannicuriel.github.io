@@ -20,15 +20,24 @@ that are subscribed to this topic that are listening to this partition will get 
 This description is very shallow and omits a lot of important details, which will be explained
 in the following details.
 
+# Entities
+
+All configuration and operation of a Kafka cluster use the following entities. Each
+one of them will be detailed in a proper moment in this tutorial - this list is
+more useful if considered as a summary of everything that occurs while using Kafka.
+
+- Kafka instance: a software instance that will play the role of a message broker;
+- Leader: Kafka instance responsible for electing partition leaders;
+- Bootstrap broker list: Kafka instance list that will be used when first connecting to the Kafka cluster.
+  These addresses will be used by clients when trying to check current cluster status and before connecting
+  to the cluster leader.
+- Cluster: coordinated group of Kafka instances that servers a group of clients;
+- Client a software instance that sends requests to a Kafka instance to get or transmit
+  information;
+- Producer: a client that plays the role of a message emitter;
+- Consumer: a client that plays the role of a message receiver;
 
 
-Elementos principais
-A configuração e funcionamento do Kafka usam os conceitos listados a seguir. Cada um dos itens será detalhado em momento oportuno neste tutorial - a lista será mais útil se considerada como um resumo de tudo o que acontece durante o uso do Kafka.
-Instância do Kafka: uma instância de software que desempenhará o papel de broker de mensagens;
-Líder: instância do Kafka responsável por eleger líderes de partições;
-Lista de brokers de bootstrap: lista de instâncias do Kafka que servirá para informar um cliente da situação atual do cluster;
-Cluster: grupo coordenado de instâncias do Kafka que atendem um grupo de clientes;
-Cliente: uma instância de software que envia requisições a uma instância do Kafka para obtenção ou transmissão de informações;
 Produtor: um cliente que desempenha o papel de emissor de mensagens;
 Consumidor: um cliente que desempenha o papel de receptor de mensagens;
 Partição: um registro de mensagens associado a um tópico e gerenciado por uma instância do Kafka que mantém um subconjunto de todas as mensagens publicadas neste tópico;

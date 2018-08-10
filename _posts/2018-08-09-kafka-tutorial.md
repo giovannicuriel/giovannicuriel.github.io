@@ -3,6 +3,8 @@ title: A Kafka tutorial
 tags: tutorial, kafka
 ---
 
+# This is Kafka
+
 Kafka is a system for message exchanging based on publisher/subscriber paradigm.
 As such, an emitter publishes a information within a context without indicating
 directly which will be its receivers. These receivers subscribe themselves to

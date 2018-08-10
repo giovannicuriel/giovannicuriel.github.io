@@ -1,6 +1,5 @@
 ---
-title: "This is a sample page"
-
+title: "Main"
 ---
 
 # Table of contents
